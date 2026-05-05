@@ -137,7 +137,7 @@
 <header id="navbar" class="sticky top-0 z-40 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-2.5 group">
+        <a href="index.php" class="flex items-center gap-2.5 group">
             <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(to top right,#06b6d4,#a855f7);box-shadow:0 10px 15px -3px rgb(6 182 212/0.2);">
                 <iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon>
             </div>
@@ -877,25 +877,69 @@
                 </div>
 
                 <!-- Booking Form -->
-                <form id="bookingForm" class="space-y-4">
+                <?php
+            $formMessage = '';
+            $formType = '';
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type']) && $_POST['form_type'] === 'booking') {
+                $name = htmlspecialchars(trim($_POST['name'] ?? ''));
+                $phone = htmlspecialchars(trim($_POST['phone'] ?? ''));
+                $email = htmlspecialchars(trim($_POST['email'] ?? ''));
+                $service = htmlspecialchars(trim($_POST['service'] ?? ''));
+                $date = htmlspecialchars(trim($_POST['date'] ?? ''));
+                $notes = htmlspecialchars(trim($_POST['notes'] ?? ''));
+
+                if (!empty($name) && !empty($phone) && !empty($email) && !empty($service) && !empty($date)) {
+                    // In production: save to database, send email, etc.
+                    // Example: mail('hello@luxehair.com', 'New Booking', "Name: $name\nPhone: $phone\nEmail: $email\nService: $service\nDate: $date\nNotes: $notes");
+                    $formMessage = "We'll confirm your slot within 1 hour.";
+                    $formType = 'success';
+                } else {
+                    $formMessage = 'Please fill in all required fields.';
+                    $formType = 'error';
+                }
+            }
+          ?>
+
+                <form id="bookingForm" method="POST" action="index.php#book" class="space-y-4">
+                    <input type="hidden" name="form_type" value="booking">
+
+                    <?php if ($formType === 'success'): ?>
+                    <div class="flex items-center gap-3 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                        <iconify-icon icon="lucide:check-circle" width="20" class="text-emerald-400 flex-shrink-0"></iconify-icon>
+                        <div>
+                            <div class="text-sm font-medium text-emerald-400">Appointment Booked! 🎉</div>
+                            <div class="text-xs text-slate-400"><?php echo $formMessage; ?></div>
+                        </div>
+                    </div>
+                    <?php elseif ($formType === 'error'): ?>
+                    <div class="flex items-center gap-3 p-4 rounded-lg bg-rose-500/10 border border-rose-500/20">
+                        <iconify-icon icon="lucide:alert-circle" width="20" class="text-rose-400 flex-shrink-0"></iconify-icon>
+                        <div>
+                            <div class="text-sm font-medium text-rose-400">Oops!</div>
+                            <div class="text-xs text-slate-400"><?php echo $formMessage; ?></div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs text-slate-400 font-medium mb-1.5">Full Name</label>
-                            <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all">
+                            <input type="text" name="name" required placeholder="Jane Doe" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all">
                         </div>
                         <div>
                             <label class="block text-xs text-slate-400 font-medium mb-1.5">Phone</label>
-                            <input type="tel" required placeholder="+1 (234) 567-890" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all">
+                            <input type="tel" name="phone" required placeholder="+1 (234) 567-890" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all">
                         </div>
                     </div>
                     <div>
                         <label class="block text-xs text-slate-400 font-medium mb-1.5">Email</label>
-                        <input type="email" required placeholder="jane@example.com" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all">
+                        <input type="email" name="email" required placeholder="jane@example.com" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs text-slate-400 font-medium mb-1.5">Service</label>
-                            <select required class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-slate-300 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all appearance-none cursor-pointer" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2394a3b8%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 12px center;">
+                            <select name="service" required class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-slate-300 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all appearance-none cursor-pointer" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2394a3b8%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 12px center;">
                                 <option value="" disabled selected>Choose service</option>
                                 <option>Hair Cutting</option>
                                 <option>Hair Coloring</option>
@@ -907,12 +951,12 @@
                         </div>
                         <div>
                             <label class="block text-xs text-slate-400 font-medium mb-1.5">Preferred Date</label>
-                            <input type="date" required class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-slate-300 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all cursor-pointer">
+                            <input type="date" name="date" required class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-slate-300 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all cursor-pointer">
                         </div>
                     </div>
                     <div>
                         <label class="block text-xs text-slate-400 font-medium mb-1.5">Notes (Optional)</label>
-                        <textarea rows="3" placeholder="Any special requests..." class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all resize-none"></textarea>
+                        <textarea name="notes" rows="3" placeholder="Any special requests..." class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all resize-none"></textarea>
                     </div>
                     <button type="submit" class="w-full py-3 rounded-lg text-sm font-medium text-slate-900 bg-white hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2" style="box-shadow:0 10px 15px -3px rgba(255,255,255,0.05);">
                         <iconify-icon icon="lucide:send" width="14"></iconify-icon>
@@ -930,7 +974,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
             <!-- Col 1 - Brand -->
             <div>
-                <a href="#" class="flex items-center gap-2.5 mb-5">
+                <a href="index.php" class="flex items-center gap-2.5 mb-5">
                     <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(to top right,#06b6d4,#a855f7);box-shadow:0 10px 15px -3px rgb(6 182 212/0.2);">
                         <iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon>
                     </div>
@@ -986,12 +1030,40 @@
             <div>
                 <h4 class="text-sm font-medium mb-5">Stay Updated</h4>
                 <p class="text-sm text-slate-500 font-light mb-4">Subscribe for exclusive deals and styling tips.</p>
-                <form id="newsletterForm" class="flex gap-2">
-                    <input type="email" required placeholder="your@email.com" class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 transition-all min-w-0">
+                <?php
+            $nlMessage = '';
+            $nlType = '';
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type']) && $_POST['form_type'] === 'newsletter') {
+                $nlEmail = htmlspecialchars(trim($_POST['nl_email'] ?? ''));
+                if (!empty($nlEmail) && filter_var($nlEmail, FILTER_VALIDATE_EMAIL)) {
+                    // In production: save to DB, send welcome email, etc.
+                    $nlMessage = 'Welcome to the LUXE HAIR family.';
+                    $nlType = 'success';
+                } else {
+                    $nlMessage = 'Please enter a valid email.';
+                    $nlType = 'error';
+                }
+            }
+          ?>
+                <form method="POST" action="index.php#contact" class="flex gap-2">
+                    <input type="hidden" name="form_type" value="newsletter">
+                    <input type="email" name="nl_email" required placeholder="your@email.com" class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 transition-all min-w-0">
                     <button type="submit" class="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-900 bg-white hover:opacity-90 transition-all flex-shrink-0">
                         <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
                     </button>
                 </form>
+                <?php if ($nlType === 'success'): ?>
+                <div class="mt-3 flex items-center gap-2 text-xs text-emerald-400">
+                    <iconify-icon icon="lucide:check" width="12"></iconify-icon>
+                    <?php echo $nlMessage; ?>
+                </div>
+                <?php elseif ($nlType === 'error'): ?>
+                <div class="mt-3 flex items-center gap-2 text-xs text-rose-400">
+                    <iconify-icon icon="lucide:alert-circle" width="12"></iconify-icon>
+                    <?php echo $nlMessage; ?>
+                </div>
+                <?php endif; ?>
                 <div class="mt-6 p-4 glass rounded-lg">
                     <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium mb-1">
                         <iconify-icon icon="lucide:shield-check" width="14"></iconify-icon>
@@ -1004,7 +1076,7 @@
 
         <!-- Bottom Bar -->
         <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="text-xs text-slate-600">&copy; 2025 LUXE HAIR. All rights reserved.</p>
+            <p class="text-xs text-slate-600">&copy; <?php echo date('Y'); ?> LUXE HAIR. All rights reserved.</p>
             <div class="flex items-center gap-6">
                 <a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Privacy Policy</a>
                 <a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Terms of Service</a>
@@ -1013,17 +1085,6 @@
         </div>
     </div>
 </footer>
-
-<!-- TOAST NOTIFICATION -->
-<div id="toast" class="toast fixed bottom-6 right-6 z-[100] glass-panel rounded-xl px-5 py-4 flex items-center gap-3 max-w-sm">
-    <div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-        <iconify-icon icon="lucide:check" width="16" class="text-emerald-400"></iconify-icon>
-    </div>
-    <div>
-        <div class="text-sm font-medium" id="toastTitle">Success!</div>
-        <div class="text-xs text-slate-400" id="toastMsg">Your action was completed.</div>
-    </div>
-</div>
 
 <!-- BACK TO TOP -->
 <button id="backToTop" class="fixed bottom-6 left-6 z-50 w-10 h-10 rounded-full glass flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-white/10">
@@ -1164,7 +1225,6 @@
         const offset = currentSlide * slidesPerView * (slideWidth + gap);
         track.style.transform = `translateX(-${offset}px)`;
 
-        // Update dots
         const dots = dotsContainer.children;
         for (let i = 0; i < dots.length; i++) {
             dots[i].className = `h-2 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-cyan-400 w-6' : 'bg-slate-600 hover:bg-slate-500 w-2'}`;
@@ -1180,7 +1240,6 @@
     prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
     nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
 
-    // Touch/swipe support
     let touchStartX = 0;
     let touchEndX = 0;
     container.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
@@ -1193,7 +1252,6 @@
         }
     }, { passive: true });
 
-    // Auto-play
     let autoPlay = setInterval(() => goToSlide(currentSlide + 1 >= getTotalPages() ? 0 : currentSlide + 1), 5000);
     container.addEventListener('mouseenter', () => clearInterval(autoPlay));
     container.addEventListener('mouseleave', () => {
@@ -1210,29 +1268,6 @@
     window.addEventListener('resize', initCarousel);
     initCarousel();
 
-    // ===== TOAST =====
-    function showToast(title, msg) {
-        const toast = document.getElementById('toast');
-        document.getElementById('toastTitle').textContent = title;
-        document.getElementById('toastMsg').textContent = msg;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 4000);
-    }
-
-    // ===== BOOKING FORM =====
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        showToast('Appointment Booked! 🎉', 'We\'ll confirm your slot within 1 hour.');
-        this.reset();
-    });
-
-    // ===== NEWSLETTER FORM =====
-    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        showToast('Subscribed! ✨', 'Welcome to the LUXE HAIR family.');
-        this.reset();
-    });
-
     // ===== BACK TO TOP =====
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
@@ -1245,10 +1280,14 @@
         }
     });
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ===== Auto-scroll to #hash on page load (for form redirects) =====
+    if (window.location.hash) {
+        setTimeout(() => {
+            const target = document.querySelector(window.location.hash);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    }
 </script>
-
-
-
-
 </body>
 </html>
