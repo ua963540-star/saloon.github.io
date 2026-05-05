@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team — LUXE HAIR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <script>tailwind.config = {theme: {extend: {fontFamily: {inter: ['Inter', 'sans-serif']}}}}</script>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #030712;
+            color: #fff;
+            overflow-x: hidden
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 3px
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+        }
+
+        .glass-panel {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05)
+        }
+
+        .blob-cyan {
+            position: fixed;
+            width: 384px;
+            height: 384px;
+            background: #0891b2;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0
+        }
+
+        .blob-violet {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #7c3aed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1)
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .nav-link {
+            position: relative
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #06b6d4, #a855f7);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 1px
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0)
+        }
+
+        .team-card .team-overlay {
+            opacity: 0;
+            transition: opacity 0.4s ease
+        }
+
+        .team-card:hover .team-overlay {
+            opacity: 1
+        }
+
+        .team-card:hover .team-img {
+            transform: scale(1.08)
+        }
+
+        .team-img {
+            transition: transform 0.5s ease
+        }
+
+        .toast {
+            transform: translateX(120%);
+            transition: transform 0.4s ease
+        }
+
+        .toast.show {
+            transform: translateX(0)
+        }
+    </style>
+</head>
+<body class="font-inter relative">
+<div class="blob-cyan" style="top:-100px;left:-100px"></div>
+<div class="blob-violet" style="bottom:-150px;right:-150px"></div>
+
+<!-- TOP BAR -->
+<div class="relative z-50 bg-slate-950/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-between text-xs text-slate-400">
+        <div class="flex items-center gap-4"><a href="tel:+1234567890"
+                                                class="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
+                <iconify-icon icon="lucide:phone" width="12"></iconify-icon>
+                +1 (234) 567-890</a><span class="hidden sm:inline text-slate-600">|</span><a
+                    href="mailto:hello@luxehair.com"
+                    class="hidden sm:flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
+                <iconify-icon icon="lucide:mail" width="12"></iconify-icon>
+                hello@luxehair.com</a></div>
+        <div class="flex items-center gap-4"><span class="hidden md:flex items-center gap-1.5"><iconify-icon
+                        icon="lucide:clock" width="12"></iconify-icon>Mon–Sat: 9AM – 8PM</span>
+            <div class="flex items-center gap-3 ml-2"><a href="#" class="hover:text-cyan-400 transition-colors">
+                    <iconify-icon icon="lucide:instagram" width="14"></iconify-icon>
+                </a><a href="#" class="hover:text-cyan-400 transition-colors">
+                    <iconify-icon icon="lucide:facebook" width="14"></iconify-icon>
+                </a><a href="#" class="hover:text-cyan-400 transition-colors">
+                    <iconify-icon icon="lucide:twitter" width="14"></iconify-icon>
+                </a></div>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"><a href="index.html"
+                                                                                          class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center"
+                 style="background:linear-gradient(to top right,#06b6d4,#a855f7)">
+                <iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon>
+            </div>
+            <div><span class="text-lg font-semibold tracking-tight">LUXE</span><span
+                        class="text-lg font-light text-slate-400 tracking-tight">HAIR</span></div>
+        </a>
+        <nav class="hidden lg:flex items-center gap-8"><a href="index.html"
+                                                          class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a><a
+                    href="offers.html"
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Offers</a><a
+                    href="services.html"
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a><a
+                    href="reviews.html"
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Reviews</a><a
+                    href="team.html"
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors active">Team</a><a
+                    href="gallery.html"
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Gallery</a><a
+                    href="contact.html"
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact

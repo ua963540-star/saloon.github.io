@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers & Deals — LUXE HAIR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>tailwind.config={theme:{extend:{fontFamily:{inter:['Inter','sans-serif']}}}}</script>
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:#030712;color:#fff;overflow-x:hidden}
+        ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#0f172a}::-webkit-scrollbar-thumb{background:#1e293b;border-radius:3px}
+        .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);box-shadow:0 4px 30px rgba(0,0,0,0.1)}
+        .glass-panel{background:linear-gradient(180deg,rgba(30,41,59,0.4) 0%,rgba(15,23,42,0.6) 100%);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.05)}
+        .blob-cyan{position:fixed;width:384px;height:384px;background:#0891b2;border-radius:50%;filter:blur(80px);opacity:0.15;pointer-events:none;z-index:0}
+        .blob-violet{position:fixed;width:500px;height:500px;background:#7c3aed;border-radius:50%;filter:blur(80px);opacity:0.12;pointer-events:none;z-index:0}
+        @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+        @keyframes fade-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .reveal{opacity:0;transform:translateY(40px);transition:all 0.7s cubic-bezier(0.4,0,0.2,1)}.reveal.active{opacity:1;transform:translateY(0)}
+        .nav-link{position:relative}.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:linear-gradient(to right,#06b6d4,#a855f7);transition:all 0.3s ease;transform:translateX(-50%);border-radius:1px}.nav-link:hover::after,.nav-link.active::after{width:100%}
+        .mobile-menu{transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1)}.mobile-menu.open{transform:translateX(0)}
+        .offer-badge{background:linear-gradient(90deg,#f59e0b,#ef4444,#f59e0b);background-size:200% 100%;animation:shimmer 3s linear infinite}
+        .toast{transform:translateX(120%);transition:transform 0.4s ease}.toast.show{transform:translateX(0)}
+        .countdown-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;text-align:center;min-width:60px}
+        .countdown-num{font-size:1.25rem;font-weight:600;font-variant-numeric:tabular-nums}
+    </style>
+</head>
+<body class="font-inter relative">
+<div class="blob-cyan" style="top:-100px;left:-100px"></div>
+<div class="blob-violet" style="bottom:-150px;right:-150px"></div>
+
+<!-- TOP BAR -->
+<div class="relative z-50 bg-slate-950/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-between text-xs text-slate-400">
+        <div class="flex items-center gap-4">
+            <a href="tel:+1234567890" class="flex items-center gap-1.5 hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:phone" width="12"></iconify-icon>+1 (234) 567-890</a>
+            <span class="hidden sm:inline text-slate-600">|</span>
+            <a href="mailto:hello@luxehair.com" class="hidden sm:flex items-center gap-1.5 hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:mail" width="12"></iconify-icon>hello@luxehair.com</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden md:flex items-center gap-1.5"><iconify-icon icon="lucide:clock" width="12"></iconify-icon>Mon–Sat: 9AM – 8PM</span>
+            <div class="flex items-center gap-3 ml-2">
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:instagram" width="14"></iconify-icon></a>
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:facebook" width="14"></iconify-icon></a>
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:twitter" width="14"></iconify-icon></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(to top right,#06b6d4,#a855f7);box-shadow:0 10px 15px -3px rgb(6 182 212/0.2)"><iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon></div>
+            <div><span class="text-lg font-semibold tracking-tight">LUXE</span><span class="text-lg font-light text-slate-400 tracking-tight">HAIR</span></div>
+        </a>
+        <nav class="hidden lg:flex items-center gap-8">
+            <a href="index.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a>
+            <a href="offers.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors active">Offers</a>
+            <a href="services.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
+            <a href="reviews.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Reviews</a>
+            <a href="team.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Team</a>
+            <a href="gallery.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Gallery</a>
+            <a href="contact.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-slate-900 transition-all duration-300 hover:opacity-90" style="background:#fff;box-shadow:0 10px 15px -3px rgba(255,255,255,0.05)"><iconify-icon icon="lucide:calendar" width="14"></iconify-icon>Book Now</a>
+            <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg glass"><iconify-icon icon="lucide:menu" width="20"></iconify-icon></button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full z-50 glass-panel">
+    <div class="flex items-center justify-between p-5 border-b border-white/5"><span class="font-semibold">Menu</span><button id="closeMenu" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors"><iconify-icon icon="lucide:x" width="18"></iconify-icon></button></div>
+    <nav class="flex flex-col p-5 gap-1">
+        <a href="index.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Home</a>
+        <a href="offers.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Offers</a>
+        <a href="services.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Services</a>
+        <a href="reviews.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Reviews</a>
+        <a href="team.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Team</a>
+        <a href="gallery.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Gallery</a>
+        <a href="contact.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Contact</a>
+        <a href="booking.html" class="mt-4 flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-medium text-slate-900 bg-white"><iconify-icon icon="lucide:calendar" width="14"></iconify-icon>Book Now</a>
+    </nav>
+</div>
+<div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+<!-- ===== PAGE CONTENT: OFFERS ===== -->
+<!-- Page Banner -->
+<section class="relative py-20 sm:py-28 overflow-hidden">
+    <div class="absolute inset-0"><img src="https://picsum.photos/seed/offers-banner/1920/600.jpg" alt="Offers" class="w-full h-full object-cover opacity-30"><div class="absolute inset-0" style="background:linear-gradient(to bottom,#030712,rgba(3,7,18,0.8),#030712)"></div></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center" style="animation:fade-in 0.8s ease forwards">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-medium text-rose-400 mb-4"><iconify-icon icon="lucide:tag" width="12"></iconify-icon>Limited Time Offers</div>
+        <h1 class="text-4xl sm:text-5xl font-medium tracking-tighter mb-4">Exclusive <span class="bg-gradient-to-r from-rose-400 to-amber-400 bg-clip-text text-transparent">Deals</span> For You</h1>
+        <p class="text-sm text-slate-400 font-light max-w-md mx-auto">Don't miss out on these special packages — available for a limited time only.</p>
+    </div>
+</section>
+
+<!-- Countdown Timer -->
+<section class="relative z-10 -mt-8 mb-16">
+    <div class="max-w-xl mx-auto px-4 sm:px-6">
+        <div class="glass-panel rounded-xl p-6 text-center reveal">
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mb-4">Offers expire in</p>
+            <div class="flex items-center justify-center gap-3" id="countdown">
+                <div class="countdown-box"><div class="countdown-num text-cyan-400" id="cd-days">00</div><div class="text-[10px] text-slate-500 mt-1">Days</div></div>
+                <span class="text-slate-600 text-xl">:</span>
+                <div class="countdown-box"><div class="countdown-num text-cyan-400" id="cd-hours">00</div><div class="text-[10px] text-slate-500 mt-1">Hours</div></div>
+                <span class="text-slate-600 text-xl">:</span>
+                <div class="countdown-box"><div class="countdown-num text-violet-400" id="cd-mins">00</div><div class="text-[10px] text-slate-500 mt-1">Mins</div></div>
+                <span class="text-slate-600 text-xl">:</span>
+                <div class="countdown-box"><div class="countdown-num text-violet-400" id="cd-secs">00</div><div class="text-[10px] text-slate-500 mt-1">Secs</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Offers Grid -->
+<section class="relative z-10 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="reveal group relative rounded-xl overflow-hidden" style="transition-delay:0.1s">
+                <div class="absolute inset-0"><img src="https://picsum.photos/seed/offer-haircut/600/400.jpg" alt="Offer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent"></div></div>
+                <div class="relative p-6 flex flex-col justify-end min-h-[320px]">
+                    <div class="offer-badge inline-flex self-start items-center px-3 py-1 rounded-full text-xs font-semibold text-white mb-3">SAVE 30%</div>
+                    <h3 class="text-xl font-medium mb-2">Cut & Color Combo</h3>
+                    <p class="text-sm text-slate-400 font-light mb-4">Get a precision cut with full color service at an unbeatable price.</p>
+                    <div class="flex items-end gap-2 mb-4"><span class="text-2xl font-semibold text-white">$89</span><span class="text-sm text-slate-500 line-through">$129</span></div>
+                    <a href="booking.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-medium bg-white text-slate-900 hover:opacity-90 transition-all">Claim Offer <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon></a>
+                </div>
+            </div>
+
+            <div class="reveal group relative rounded-xl overflow-hidden md:-mt-4 md:mb-4" style="transition-delay:0.2s">
+                <div class="absolute inset-0 ring-2 ring-cyan-400/50 rounded-xl z-10 pointer-events-none"></div>
+                <div class="absolute inset-0"><img src="https://picsum.photos/seed/offer-keratin/600/500.jpg" alt="Offer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent"></div></div>
+                <div class="relative p-6 flex flex-col justify-end min-h-[360px]">
+                    <div class="flex items-center gap-2 mb-3"><div class="offer-badge inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-white">SAVE 40%</div><span class="px-2 py-0.5 rounded-full bg-cyan-400/10 text-cyan-400 text-xs font-medium border border-cyan-400/20">Popular</span></div>
+                    <h3 class="text-xl font-medium mb-2">Full Transformation</h3>
+                    <p class="text-sm text-slate-400 font-light mb-4">Cut, color, keratin treatment & blowout — the complete luxury package.</p>
+                    <div class="flex items-end gap-2 mb-4"><span class="text-2xl font-semibold text-white">$149</span><span class="text-sm text-slate-500 line-through">$249</span></div>
+                    <a href="booking.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-medium bg-white text-slate-900 hover:opacity-90 transition-all">Claim Offer <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon></a>
+                </div>
+            </div>
+
+            <div class="reveal group relative rounded-xl overflow-hidden" style="transition-delay:0.3s">
+                <div class="absolute inset-0"><img src="https://picsum.photos/seed/offer-bridal/600/400.jpg" alt="Offer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent"></div></div>
+                <div class="relative p-6 flex flex-col justify-end min-h-[320px]">
+                    <div class="offer-badge inline-flex self-start items-center px-3 py-1 rounded-full text-xs font-semibold text-white mb-3">SAVE 25%</div>
+                    <h3 class="text-xl font-medium mb-2">Bridal Package</h3>
+                    <p class="text-sm text-slate-400 font-light mb-4">Trial + wedding day styling with accessories included.</p>
+                    <div class="flex items-end gap-2 mb-4"><span class="text-2xl font-semibold text-white">$199</span><span class="text-sm text-slate-500 line-through">$265</span></div>
+                    <a href="booking.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-medium bg-white text-slate-900 hover:opacity-90 transition-all">Claim Offer <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extra offers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+            <div class="reveal glass-panel rounded-xl p-6 flex items-center gap-5" style="transition-delay:0.1s">
+                <div class="w-16 h-16 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0"><iconify-icon icon="lucide:gift" width="28" class="text-emerald-400"></iconify-icon></div>
+                <div class="flex-1"><h3 class="text-base font-medium mb-1">Refer a Friend</h3><p class="text-sm text-slate-400 font-light">Both you and your friend get $20 off your next visit.</p></div>
+                <span class="text-lg font-semibold text-emerald-400 flex-shrink-0">$20</span>
+            </div>
+            <div class="reveal glass-panel rounded-xl p-6 flex items-center gap-5" style="transition-delay:0.15s">
+                <div class="w-16 h-16 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0"><iconify-icon icon="lucide:zap" width="28" class="text-amber-400"></iconify-icon></div>
+                <div class="flex-1"><h3 class="text-base font-medium mb-1">First Visit Discount</h3><p class="text-sm text-slate-400 font-light">New clients enjoy 15% off any service on their first visit.</p></div>
+                <span class="text-lg font-semibold text-amber-400 flex-shrink-0">15%</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative z-10 border-t border-white/5 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div>
+                <a href="index.html" class="flex items-center gap-2.5 mb-5"><div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(to top right,#06b6d4,#a855f7);box-shadow:0 10px 15px -3px rgb(6 182 212/0.2)"><iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon></div><div><span class="text-lg font-semibold tracking-tight">LUXE</span><span class="text-lg font-light text-slate-400 tracking-tight">HAIR</span></div></a>
+                <p class="text-sm text-slate-500 font-light leading-relaxed mb-5">Premium hair salon offering world-class styling, coloring, and treatments.</p>
+                <div class="flex items-center gap-3"><a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:instagram" width="16"></iconify-icon></a><a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:facebook" width="16"></iconify-icon></a><a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:twitter" width="16"></iconify-icon></a></div>
+            </div>
+            <div><h4 class="text-sm font-medium mb-5">Quick Links</h4><ul class="space-y-3"><li><a href="index.html" class="text-sm text-slate-500 hover:text-white transition-colors">Home</a></li><li><a href="offers.html" class="text-sm text-slate-500 hover:text-white transition-colors">Offers & Deals</a></li><li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Services</a></li><li><a href="reviews.html" class="text-sm text-slate-500 hover:text-white transition-colors">Reviews</a></li><li><a href="team.html" class="text-sm text-slate-500 hover:text-white transition-colors">Our Team</a></li><li><a href="gallery.html" class="text-sm text-slate-500 hover:text-white transition-colors">Gallery</a></li></ul></div>
+            <div><h4 class="text-sm font-medium mb-5">Services</h4><ul class="space-y-3"><li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Cutting</a></li><li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Coloring</a></li><li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Keratin Treatment</a></li><li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Blowout & Styling</a></li><li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Extensions</a></li><li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Bridal & Event</a></li></ul></div>
+            <div><h4 class="text-sm font-medium mb-5">Stay Updated</h4><p class="text-sm text-slate-500 font-light mb-4">Subscribe for exclusive deals.</p><form id="newsletterForm" class="flex gap-2"><input type="email" required placeholder="your@email.com" class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 transition-all min-w-0"><button type="submit" class="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-900 bg-white hover:opacity-90 transition-all flex-shrink-0"><iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon></button></form></div>
+        </div>
+        <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4"><p class="text-xs text-slate-600">&copy; 2025 LUXE HAIR. All rights reserved.</p><div class="flex items-center gap-6"><a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Privacy Policy</a><a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Terms of Service</a></div></div>
+    </div>
+</footer>
+
+<div id="toast" class="toast fixed bottom-6 right-6 z-[100] glass-panel rounded-xl px-5 py-4 flex items-center gap-3 max-w-sm"><div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0"><iconify-icon icon="lucide:check" width="16" class="text-emerald-400"></iconify-icon></div><div><div class="text-sm font-medium" id="toastTitle">Success!</div><div class="text-xs text-slate-400" id="toastMsg">Done.</div></div></div>
+<button id="backToTop" class="fixed bottom-6 left-6 z-50 w-10 h-10 rounded-full glass flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-white/10"><iconify-icon icon="lucide:chevron-up" width="18"></iconify-icon></button>
+
+<script>
+    const menuBtn=document.getElementById('menuBtn'),closeMenuBtn=document.getElementById('closeMenu'),mobileMenu=document.getElementById('mobileMenu'),menuOverlay=document.getElementById('menuOverlay'),mobileLinks=document.querySelectorAll('.mobile-link');
+    function openMenu(){mobileMenu.classList.add('open');menuOverlay.classList.remove('hidden');document.body.style.overflow='hidden'}function closeMenu(){mobileMenu.classList.remove('open');menuOverlay.classList.add('hidden');document.body.style.overflow=''}
+    menuBtn.addEventListener('click',openMenu);closeMenuBtn.addEventListener('click',closeMenu);menuOverlay.addEventListener('click',closeMenu);mobileLinks.forEach(l=>l.addEventListener('click',closeMenu));
+    const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{if(window.scrollY>50){navbar.style.background='rgba(3,7,18,0.85)';navbar.style.backdropFilter='blur(20px)';navbar.style.borderBottom='1px solid rgba(255,255,255,0.05)'}else{navbar.style.background='transparent';navbar.style.backdropFilter='none';navbar.style.borderBottom='none'}});
+    const revealElements=document.querySelectorAll('.reveal');const revealObserver=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('active')})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});revealElements.forEach(el=>revealObserver.observe(el));
+
+    // Countdown (7 days from now)
+    const endDate=new Date();endDate.setDate(endDate.getDate()+7);
+    function updateCountdown(){const now=new Date(),diff=endDate-now;if(diff<=0)return;const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);document.getElementById('cd-days').textContent=String(d).padStart(2,'0');document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');document.getElementById('cd-secs').textContent=String(s).padStart(2,'0')}
+    updateCountdown();setInterval(updateCountdown,1000);
+
+    function showToast(t,m){const toast=document.getElementById('toast');document.getElementById('toastTitle').textContent=t;document.getElementById('toastMsg').textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),4000)}
+    document.getElementById('newsletterForm').addEventListener('submit',function(e){e.preventDefault();showToast('Subscribed! ✨','Welcome to LUXE HAIR.');this.reset()});
+    const backToTop=document.getElementById('backToTop');window.addEventListener('scroll',()=>{if(window.scrollY>600){backToTop.style.opacity='1';backToTop.style.pointerEvents='auto'}else{backToTop.style.opacity='0';backToTop.style.pointerEvents='none'}});backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
