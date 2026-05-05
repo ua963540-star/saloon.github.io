@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — LUXE HAIR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>tailwind.config={theme:{extend:{fontFamily:{inter:['Inter','sans-serif']}}}}</script>
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',sans-serif;background:#030712;color:#fff;overflow-x:hidden}
+        ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#0f172a}::-webkit-scrollbar-thumb{background:#1e293b;border-radius:3px}
+        .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);box-shadow:0 4px 30px rgba(0,0,0,0.1)}
+        .glass-panel{background:linear-gradient(180deg,rgba(30,41,59,0.4) 0%,rgba(15,23,42,0.6) 100%);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.05)}
+        .blob-cyan{position:fixed;width:384px;height:384px;background:#0891b2;border-radius:50%;filter:blur(80px);opacity:0.15;pointer-events:none;z-index:0}
+        .blob-violet{position:fixed;width:500px;height:500px;background:#7c3aed;border-radius:50%;filter:blur(80px);opacity:0.12;pointer-events:none;z-index:0}
+        @keyframes fade-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes pulse-glow{0%,100%{opacity:0.4}50%{opacity:0.8}}
+        .reveal{opacity:0;transform:translateY(40px);transition:all 0.7s cubic-bezier(0.4,0,0.2,1)}.reveal.active{opacity:1;transform:translateY(0)}
+        .nav-link{position:relative}.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:linear-gradient(to right,#06b6d4,#a855f7);transition:all 0.3s ease;transform:translateX(-50%);border-radius:1px}.nav-link:hover::after,.nav-link.active::after{width:100%}
+        .mobile-menu{transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1)}.mobile-menu.open{transform:translateX(0)}
+        .toast{transform:translateX(120%);transition:transform 0.4s ease}.toast.show{transform:translateX(0)}
+        .contact-card{transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}.contact-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.15)}.contact-card:hover .contact-icon{transform:scale(1.1)}.contact-icon{transition:transform 0.4s ease}
+        .faq-item{transition:all 0.3s ease}.faq-item.active .faq-answer{max-height:200px;padding-top:16px;opacity:1}.faq-answer{max-height:0;opacity:0;overflow:hidden;padding-top:0;transition:all 0.4s ease}.faq-chevron{transition:transform 0.3s ease}.faq-item.active .faq-chevron{transform:rotate(180deg)}
+        .form-input{transition:all 0.3s ease}.form-input:focus{border-color:rgba(6,182,212,0.5);box-shadow:0 0 0 3px rgba(6,182,212,0.1)}
+    </style>
+</head>
+<body class="font-inter relative">
+<div class="blob-cyan" style="top:-100px;left:-100px"></div>
+<div class="blob-violet" style="bottom:-150px;right:-150px"></div>
+
+<!-- TOP BAR -->
+<div class="relative z-50 bg-slate-950/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-between text-xs text-slate-400">
+        <div class="flex items-center gap-4">
+            <a href="tel:+1234567890" class="flex items-center gap-1.5 hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:phone" width="12"></iconify-icon>+1 (234) 567-890</a>
+            <span class="hidden sm:inline text-slate-600">|</span>
+            <a href="mailto:hello@luxehair.com" class="hidden sm:flex items-center gap-1.5 hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:mail" width="12"></iconify-icon>hello@luxehair.com</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden md:flex items-center gap-1.5"><iconify-icon icon="lucide:clock" width="12"></iconify-icon>Mon–Sat: 9AM – 8PM</span>
+            <div class="flex items-center gap-3 ml-2">
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:instagram" width="14"></iconify-icon></a>
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:facebook" width="14"></iconify-icon></a>
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:twitter" width="14"></iconify-icon></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(to top right,#06b6d4,#a855f7);box-shadow:0 10px 15px -3px rgb(6 182 212/0.2)"><iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon></div>
+            <div><span class="text-lg font-semibold tracking-tight">LUXE</span><span class="text-lg font-light text-slate-400 tracking-tight">HAIR</span></div>
+        </a>
+        <nav class="hidden lg:flex items-center gap-8">
+            <a href="index.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a>
+            <a href="offers.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Offers</a>
+            <a href="services.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
+            <a href="reviews.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Reviews</a>
+            <a href="teams.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Team</a>
+            <a href="gallery.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Gallery</a>
+            <a href="contact.html" class="nav-link text-sm font-medium text-white transition-colors active">Contact</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <a href="index.html#book" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-slate-900 transition-all duration-300 hover:opacity-90" style="background:#fff;box-shadow:0 10px 15px -3px rgba(255,255,255,0.05)"><iconify-icon icon="lucide:calendar" width="14"></iconify-icon>Book Now</a>
+            <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg glass"><iconify-icon icon="lucide:menu" width="20"></iconify-icon></button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full z-50 glass-panel">
+    <div class="flex items-center justify-between p-5 border-b border-white/5"><span class="font-semibold">Menu</span><button id="closeMenu" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors"><iconify-icon icon="lucide:x" width="18"></iconify-icon></button></div>
+    <nav class="flex flex-col p-5 gap-1">
+        <a href="index.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Home</a>
+        <a href="offers.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Offers</a>
+        <a href="services.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Services</a>
+        <a href="reviews.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Reviews</a>
+        <a href="teams.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Team</a>
+        <a href="gallery.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Gallery</a>
+        <a href="contact.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-white hover:bg-white/5 transition-all">Contact</a>
+        <a href="index.html#book" class="mt-4 flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-medium text-slate-900 bg-white"><iconify-icon icon="lucide:calendar" width="14"></iconify-icon>Book Now</a>
+    </nav>
+</div>
+<div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+<!-- ===== PAGE BANNER ===== -->
+<section class="relative py-20 sm:py-28 overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://picsum.photos/seed/contact-salon-bg/1920/600.jpg" alt="Contact" class="w-full h-full object-cover opacity-20">
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,#030712,rgba(3,7,18,0.8),#030712)"></div>
+    </div>
+    <div class="absolute top-32 right-24 w-2 h-2 bg-cyan-400 rounded-full hidden lg:block" style="animation:pulse-glow 3s ease-in-out infinite"></div>
+    <div class="absolute top-48 right-44 w-1.5 h-1.5 bg-violet-400 rounded-full hidden lg:block" style="animation:pulse-glow 3s ease-in-out infinite 1s"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center" style="animation:fade-in 0.8s ease forwards">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-medium text-cyan-400 mb-4"><iconify-icon icon="lucide:map-pin" width="12"></iconify-icon>Get In Touch</div>
+        <h1 class="text-4xl sm:text-5xl font-medium tracking-tighter mb-4">Contact <span class="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Us</span></h1>
+        <p class="text-sm text-slate-400 font-light max-w-lg mx-auto">Have a question or want to book an appointment? We'd love to hear from you.</p>
+    </div>
+</section>
+
+<!-- ===== CONTACT CARDS ===== -->
+<section class="relative z-10 -mt-4 mb-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+            <div class="contact-card glass-panel rounded-xl p-5 text-center">
+                <div class="contact-icon w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-3"><iconify-icon icon="lucide:map-pin" width="22" class="text-cyan-400"></iconify-icon></div>
+                <h3 class="text-sm font-medium mb-1">Visit Us</h3>
+                <p class="text-xs text-slate-400 font-light leading-relaxed">123 Beauty Lane<br>Downtown, NY 10001</p>
+            </div>
+            <div class="contact-card glass-panel rounded-xl p-5 text-center">
+                <div class="contact-icon w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mx-auto mb-3"><iconify-icon icon="lucide:phone" width="22" class="text-violet-400"></iconify-icon></div>
+                <h3 class="text-sm font-medium mb-1">Call Us</h3>
+                <p class="text-xs text-slate-400 font-light">+1 (234) 567-890<br>+1 (234) 567-891</p>
+            </div>
+            <div class="contact-card glass-panel rounded-xl p-5 text-center">
+                <div class="contact-icon w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-3"><iconify-icon icon="lucide:mail" width="22" class="text-cyan-400"></iconify-icon></div>
+                <h3 class="text-sm font-medium mb-1">Email Us</h3>
+                <p class="text-xs text-slate-400 font-light">hello@luxehair.com<br>booking@luxehair.com</p>
+            </div>
+            <div class="contact-card glass-panel rounded-xl p-5 text-center">
+                <div class="contact-icon w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mx-auto mb-3"><iconify-icon icon="lucide:clock" width="22" class="text-violet-400"></iconify-icon></div>
+                <h3 class="text-sm font-medium mb-1">Working Hours</h3>
+                <p class="text-xs text-slate-400 font-light">Mon – Sat<br>9:00 AM – 8:00 PM<br>Sun: 10AM – 5PM</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT FORM + MAP ===== -->
+<section class="relative z-10 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Form -->
+            <div class="reveal" style="transition-delay:0.1s">
+                <div class="glass-panel rounded-2xl p-6 sm:p-8">
+                    <h3 class="text-lg font-medium mb-1">Send a Message</h3>
+                    <p class="text-xs text-slate-500 font-light mb-6">Fill out the form below and we'll get back to you within 24 hours.</p>
+                    <?php
+                    $cfMessage = '';
+                    $cfType = '';
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type']) && $_POST['form_type'] === 'contact') {
+                        $cfName = htmlspecialchars(trim($_POST['cf_name'] ?? ''));
+                        $cfEmail = htmlspecialchars(trim($_POST['cf_email'] ?? ''));
+                        $cfPhone = htmlspecialchars(trim($_POST['cf_phone'] ?? ''));
+                        $cfSubject = htmlspecialchars(trim($_POST['cf_subject'] ?? ''));
+                        $cfMessage_text = htmlspecialchars(trim($_POST['cf_message'] ?? ''));
+                        if (!empty($cfName) && !empty($cfEmail) && !empty($cfMessage_text)) {
+                            $cfMessage = "Thanks for reaching out! We'll respond within 24 hours.";
+                            $cfType = 'success';
+                        } else {
+                            $cfMessage = 'Please fill in all required fields.';
+                            $cfType = 'error';
+                        }
+                    }
+                    ?>
+                    <?php if ($cfType === 'success'): ?>
+                    <div class="flex items-center gap-3 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 mb-6"><iconify-icon icon="lucide:check-circle" width="20" class="text-emerald-400 flex-shrink-0"></iconify-icon><div><div class="text-sm font-medium text-emerald-400">Message Sent! ✨</div><div class="text-xs text-slate-400"><?php echo $cfMessage; ?></div></div></div>
+                    <?php elseif ($cfType === 'error'): ?>
+                    <div class="flex items-center gap-3 p-4 rounded-lg bg-rose-500/10 border border-rose-500/20 mb-6"><iconify-icon icon="lucide:alert-circle" width="20" class="text-rose-400 flex-shrink-0"></iconify-icon><div><div class="text-sm font-medium text-rose-400">Oops!</div><div class="text-xs text-slate-400"><?php echo $cfMessage; ?></div></div></div>
+                    <?php endif; ?>
+
+                    <form method="POST" action="contact.html" class="space-y-4">
+                        <input type="hidden" name="form_type" value="contact">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div><label class="block text-xs text-slate-400 font-medium mb-1.5">Full Name *</label><input type="text" name="cf_name" required placeholder="Jane Doe" value="<?php echo isset($cfName) ? $cfName : ''; ?>" class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none"></div>
+                            <div><label class="block text-xs text-slate-400 font-medium mb-1.5">Email *</label><input type="email" name="cf_email" required placeholder="jane@example.com" value="<?php echo isset($cfEmail) ? $cfEmail : ''; ?>" class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none"></div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div><label class="block text-xs text-slate-400 font-medium mb-1.5">Phone</label><input type="tel" name="cf_phone" placeholder="+1 (234) 567-890" value="<?php echo isset($cfPhone) ? $cfPhone : ''; ?>" class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none"></div>
+                            <div><label class="block text-xs text-slate-400 font-medium mb-1.5">Subject</label><input type="text" name="cf_subject" placeholder="General Inquiry" value="<?php echo isset($cfSubject) ? $cfSubject : ''; ?>" class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none"></div>
+                        </div>
+                        <div><label class="block text-xs text-slate-400 font-medium mb-1.5">Message *</label><textarea name="cf_message" rows="5" required placeholder="Tell us how we can help you..." class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none resize-none"><?php echo isset($cfMessage_text) ? $cfMessage_text : ''; ?></textarea></div>
+                        <button type="submit" class="w-full py-3 rounded-lg text-sm font-medium text-slate-900 bg-white hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2" style="box-shadow:0 10px 15px -3px rgba(255,255,255,0.05)"><iconify-icon icon="lucide:send" width="14"></iconify-icon>Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="reveal" style="transition-delay:0.2s">
+                <div class="glass-panel rounded-2xl overflow-hidden h-full min-h-[400px] lg:min-h-0 flex flex-col">
+                    <div class="flex items-center justify-between p-5 border-b border-white/5">
+                        <h3 class="text-sm font-medium">Find Us</h3>
+                        <a href="https://maps.google.com" target="_blank" class="text-xs text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-1 transition-colors">Open in Maps <iconify-icon icon="lucide:external-link" width="12"></iconify-icon></a>
+                    </div>
+                    <div class="flex-1 relative bg-slate-800/30">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6!2d-74.005994!3d40.712778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2589b3a8c7e7b%3A0x4c45e8b5f08b5e!2s40.712778,-74.005994!5e0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0:0x89c2589b3a8c7e7b!2s40.712778,-74.005994" width="100%" height="100%" style="border:0;filter:invert(90%) hue-rotate(180deg) brightness(0.8) contrast(0.9) saturate(0.3);" loading="lazy" class="absolute inset-0 w-full h-full"></iframe>
+                        <div class="absolute top-4 left-4 right-4 glass rounded-lg px-3 py-2 flex items-center gap-2 pointer-events-none">
+                            <iconify-icon icon="lucide:map-pin" width="12" class="text-cyan-400"></iconify-icon>
+                            <span class="text-[10px] text-slate-300 font-medium">123 Beauty Lane, Downtown, NY 10001</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="relative z-10 py-20 sm:py-24">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/5 to-transparent pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 relative">
+        <div class="text-center mb-14 reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-medium text-violet-400 mb-4"><iconify-icon icon="lucide:help-circle" width="12"></iconify-icon>Common Questions</div>
+            <h2 class="text-3xl sm:text-4xl font-medium tracking-tighter mb-3">Frequently <span class="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">Asked</span></h2>
+            <p class="text-sm text-slate-400 font-light max-w-md mx-auto">Everything you need to know before your visit.</p>
+        </div>
+
+        <div class="space-y-3 reveal" style="transition-delay:0.1s">
+            <!-- FAQ 1 -->
+            <div class="faq-item glass-panel rounded-xl overflow-hidden">
+                <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFaq(this)">
+                    <span class="text-sm font-medium pr-4">Do I need to book an appointment or do you accept walk-ins?</span>
+                    <iconify-icon icon="lucide:chevron-down" width="18" class="faq-chevron text-slate-500 flex-shrink-0"></iconify-icon>
+                </button>
+                <div class="faq-answer px-5 pb-5">
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Both! We welcome walk-ins whenever we have availability, but we highly recommend booking ahead for guaranteed time slots. Walk-ins are served on a first-come, first-served basis and may incur longer wait times during peak hours.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item glass-panel rounded-xl overflow-hidden">
+                <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFaq(this)">
+                    <span class="text-sm font-medium pr-4">How do I prepare for my appointment?</span>
+                    <iconify-icon icon="lucide:chevron-down" width="18" class="faq-chevron text-slate-500 flex-shrink-0"></iconify-icon>
+                </button>
+                <div class="faq-answer px-5 pb-5">
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Come with unwashed hair for the best results. If you have reference photos of styles you like, bring them! Avoid applying heavy styling products before chemical treatments. Arrive 10 minutes early for your consultation.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item glass-panel rounded-xl overflow-hidden">
+                <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFaq(this)">
+                    <span class="text-sm font-medium pr-4">What is your cancellation policy?</span>
+                    <iconify-icon icon="lucide:chevron-down" width="18" class="faq-chevron text-slate-500 flex-shrink-0"></iconify-icon>
+                </button>
+                <div class="faq-answer px-5 pb-5">
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Free cancellations up to 24 hours before your appointment. Cancellations within 24 hours may incur a 50% charge. No-shows are charged the full service price. We understand things happen — just give us a call!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item glass-panel rounded-xl overflow-hidden">
+                <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFaq(this)">
+                    <span class="text-sm font-medium pr-4">Which products do you use?</span>
+                    <iconify-icon icon="lucide:chevron-down" width="18" class="faq-chevron text-slate-500 flex-shrink-0"></iconify-icon>
+                </button>
+                <div class="faq-answer px-5 pb-5">
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">We exclusively use salon-grade, sulfate-free, cruelty-free products from brands like Wella, Olaplex, Schwarzkopf, Moroccanoil, and Kevin Murphy. We're happy to recommend products for your at-home routine too!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item glass-panel rounded-xl overflow-hidden">
+                <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFaq(this)">
+                    <span class="text-sm font-medium pr-4">Do you offer gift cards?</span>
+                    <iconify-icon icon="lucide:chevron-down" width="18" class="faq-chevron text-slate-500 flex-shrink-0"></iconify-icon>
+                </button>
+                <div class="faq-answer px-5 pb-5">
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Yes! Gift cards are available in any denomination starting at $25. They can be purchased in-salon or online. They never expire and make the perfect gift for any occasion.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item glass-panel rounded-xl overflow-hidden">
+                <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFaq(this)">
+                    <span class="text-sm font-medium pr-4">Is parking available?</span>
+                    <iconify-icon icon="lucide:chevron-down" width="18" class="faq-chevron text-slate-500 flex-shrink-0"></iconify-icon>
+                </button>
+                <div class="faq-answer px-5 pb-5">
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Yes! We have a private parking lot behind our building with complimentary parking for all clients during their appointment. Street parking is also available nearby at meters.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item glass-panel rounded-xl overflow-hidden">
+                <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFaq(this)">
+                    <span class="text-sm font-medium pr-4">Do you cater to bridal parties or group bookings?</span>
+                    <iconify-icon icon="lucide:chevron-down" width="18" class="faq-chevron text-slate-500 flex-shrink-0"></iconify-icon>
+                </button>
+                <div class="faq-answer px-5 pb-5">
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Absolutely! We love hosting bridal parties and group bookings. We offer special group packages with refreshments and a dedicated team. Please contact us at least 2 weeks in advance for groups of 4+ people so we can prepare properly.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="faq-item glass-panel rounded-xl overflow-hidden">
+                <button class="w-full flex items-center justify-between p-5 text-left" onclick="toggleFaq(this)">
+                    <span class="text-sm font-medium pr-4">What if I'm not happy with my service?</span>
+                    <iconify-icon icon="lucide:chevron-down" width="18" class="faq-chevron text-slate-500 flex-shrink-0"></iconify-icon>
+                </button>
+                <div class="faq-answer px-5 pb-5">
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">Your satisfaction is our top priority. If you're not 100% happy, let us know within 48 hours and we'll offer a complimentary fix or adjustment at no extra charge. We stand behind every service we perform.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Still have questions? -->
+        <div class="text-center mt-10 reveal">
+            <p class="text-sm text-slate-500 font-light mb-4">Still have questions?</p>
+            <a href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium text-white glass hover:bg-white/10 transition-all duration-300">
+                <iconify-icon icon="lucide:message-circle" width="16"></iconify-icon>
+                Chat With Us
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="relative z-10 border-t border-white/5 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div>
+                <a href="index.html" class="flex items-center gap-2.5 mb-5">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(to top right,#06b6d4,#a855f7);box-shadow:0 10px 15px -3px rgb(6 182 212/0.2)"><iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon></div>
+                    <div><span class="text-lg font-semibold tracking-tight">LUXE</span><span class="text-lg font-light text-slate-400 tracking-tight">HAIR</span></div>
+                </a>
+                <p class="text-sm text-slate-500 font-light leading-relaxed mb-5">Premium hair salon offering world-class styling, coloring, and treatments in the heart of the city.</p>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:instagram" width="16"></iconify-icon></a>
+                    <a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:facebook" width="16"></iconify-icon></a>
+                    <a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:twitter" width="16"></iconify-icon></a>
+                    <a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:youtube" width="16"></iconify-icon></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-sm font-medium mb-5">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-sm text-slate-500 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="offers.html" class="text-sm text-slate-500 hover:text-white transition-colors">Offers & Deals</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Services</a></li>
+                    <li><a href="reviews.html" class="text-sm text-slate-500 hover:text-white transition-colors">Reviews</a></li>
+                    <li><a href="teams.html" class="text-sm text-slate-500 hover:text-white transition-colors">Our Team</a></li>
+                    <li><a href="gallery.html" class="text-sm text-slate-500 hover:text-white transition-colors">Gallery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-medium mb-5">Services</h4>
+                <ul class="space-y-3">
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Cutting</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Coloring</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Keratin Treatment</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Blowout & Styling</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Extensions</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Bridal & Event</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-medium mb-5">Stay Updated</h4>
+                <p class="text-sm text-slate-500 font-light mb-4">Subscribe for exclusive deals and styling tips.</p>
+                <form id="newsletterForm" class="flex gap-2"><input type="email" required placeholder="your@email.com" class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 transition-all min-w-0"><button type="submit" class="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-900 bg-white hover:opacity-90 transition-all flex-shrink-0"><iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon></button></form>
+                <div class="mt-6 p-4 glass rounded-lg"><div class="flex items-center gap-2 text-xs text-emerald-400 font-medium mb-1"><iconify-icon icon="lucide:shield-check" width="14"></iconify-icon>100% Privacy</div><p class="text-[10px] text-slate-500">We never share your info. Unsubscribe anytime.</p></div>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-600">&copy; 2025 LUXE HAIR. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Privacy Policy</a>
+                <a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Terms of Service</a>
+                <a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast" class="toast fixed bottom-6 right-6 z-[100] glass-panel rounded-xl px-5 py-4 flex items-center gap-3 max-w-sm">
+    <div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0"><iconify-icon icon="lucide:check" width="16" class="text-emerald-400"></iconify-icon></div>
+    <div><div class="text-sm font-medium" id="toastTitle">Success!</div><div class="text-xs text-slate-400" id="toastMsg">Done.</div></div>
+</div>
+
+<button id="backToTop" class="fixed bottom-6 left-6 z-50 w-10 h-10 rounded-full glass flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-white/10"><iconify-icon icon="lucide:chevron-up" width="18"></iconify-icon></button>
+
+<script>
+    // ===== MOBILE MENU =====
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenuBtn = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; }
+    menuBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    // ===== STICKY NAVBAR =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(3,7,18,0.85)';
+            navbar.style.backdropFilter = 'blur(20px)';
+            navbar.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        } else {
+            navbar.style.background = 'transparent';
+            navbar.style.backdropFilter = 'none';
+            navbar.style.borderBottom = 'none';
+        }
+    });
+
+    // ===== SCROLL REVEAL =====
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ===== FAQ =====
+    function toggleFaq(btn) {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('active');
+        // Close all others
+        document.querySelectorAll('.faq-item.active').forEach(i => { if (i !== item) i.classList.remove('active'); });
+        if (!isOpen) item.classList.add('active');
+    }
+
+    // ===== TOAST =====
+    function showToast(title, msg) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toastTitle').textContent = title;
+        document.getElementById('toastMsg').textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ===== NEWSLETTER =====
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        showToast('Subscribed! ✨', 'Welcome to the LUXE HAIR family.');
+        this.reset();
+    });
+
+    // ===== BACK TO TOP =====
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) { backToTop.style.opacity = '1'; backToTop.style.pointerEvents = 'auto'; }
+        else { backToTop.style.opacity = '0'; backToTop.style.pointerEvents = 'none'; }
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>

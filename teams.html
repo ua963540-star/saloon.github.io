@@ -10,150 +10,32 @@
           rel="stylesheet">
     <script>tailwind.config = {theme: {extend: {fontFamily: {inter: ['Inter', 'sans-serif']}}}}</script>
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #030712;
-            color: #fff;
-            overflow-x: hidden
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 3px
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
-        }
-
-        .glass-panel {
-            background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05)
-        }
-
-        .blob-cyan {
-            position: fixed;
-            width: 384px;
-            height: 384px;
-            background: #0891b2;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 0
-        }
-
-        .blob-violet {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: #7c3aed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.12;
-            pointer-events: none;
-            z-index: 0
-        }
-
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(20px)
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1)
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0)
-        }
-
-        .nav-link {
-            position: relative
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, #06b6d4, #a855f7);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-            border-radius: 1px
-        }
-
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%
-        }
-
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)
-        }
-
-        .mobile-menu.open {
-            transform: translateX(0)
-        }
-
-        .team-card .team-overlay {
-            opacity: 0;
-            transition: opacity 0.4s ease
-        }
-
-        .team-card:hover .team-overlay {
-            opacity: 1
-        }
-
-        .team-card:hover .team-img {
-            transform: scale(1.08)
-        }
-
-        .team-img {
-            transition: transform 0.5s ease
-        }
-
-        .toast {
-            transform: translateX(120%);
-            transition: transform 0.4s ease
-        }
-
-        .toast.show {
-            transform: translateX(0)
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+        html { scroll-behavior: smooth }
+        body { font-family: 'Inter', sans-serif; background: #030712; color: #fff; overflow-x: hidden }
+        ::-webkit-scrollbar { width: 6px }
+        ::-webkit-scrollbar-track { background: #0f172a }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px }
+        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 30px rgba(0,0,0,0.1) }
+        .glass-panel { background: linear-gradient(180deg, rgba(30,41,59,0.4) 0%, rgba(15,23,42,0.6) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05) }
+        .blob-cyan { position: fixed; width: 384px; height: 384px; background: #0891b2; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; z-index: 0 }
+        .blob-violet { position: fixed; width: 500px; height: 500px; background: #7c3aed; border-radius: 50%; filter: blur(80px); opacity: 0.12; pointer-events: none; z-index: 0 }
+        @keyframes fade-in { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
+        @keyframes float-1 { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+        @keyframes pulse-glow { 0%,100% { opacity: 0.4 } 50% { opacity: 0.8 } }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1) }
+        .reveal.active { opacity: 1; transform: translateY(0) }
+        .nav-link { position: relative }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: linear-gradient(to right,#06b6d4,#a855f7); transition: all 0.3s ease; transform: translateX(-50%); border-radius: 1px }
+        .nav-link:hover::after, .nav-link.active::after { width: 100% }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1) }
+        .mobile-menu.open { transform: translateX(0) }
+        .team-card .team-overlay { opacity: 0; transition: opacity 0.4s ease }
+        .team-card:hover .team-overlay { opacity: 1 }
+        .team-card:hover .team-img { transform: scale(1.08) }
+        .team-img { transition: transform 0.5s ease }
+        .toast { transform: translateX(120%); transition: transform 0.4s ease }
+        .toast.show { transform: translateX(0) }
     </style>
 </head>
 <body class="font-inter relative">
@@ -163,49 +45,546 @@
 <!-- TOP BAR -->
 <div class="relative z-50 bg-slate-950/80 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-between text-xs text-slate-400">
-        <div class="flex items-center gap-4"><a href="tel:+1234567890"
-                                                class="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
-                <iconify-icon icon="lucide:phone" width="12"></iconify-icon>
-                +1 (234) 567-890</a><span class="hidden sm:inline text-slate-600">|</span><a
-                    href="mailto:hello@luxehair.com"
-                    class="hidden sm:flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
-                <iconify-icon icon="lucide:mail" width="12"></iconify-icon>
-                hello@luxehair.com</a></div>
-        <div class="flex items-center gap-4"><span class="hidden md:flex items-center gap-1.5"><iconify-icon
-                        icon="lucide:clock" width="12"></iconify-icon>Mon–Sat: 9AM – 8PM</span>
-            <div class="flex items-center gap-3 ml-2"><a href="#" class="hover:text-cyan-400 transition-colors">
-                    <iconify-icon icon="lucide:instagram" width="14"></iconify-icon>
-                </a><a href="#" class="hover:text-cyan-400 transition-colors">
-                    <iconify-icon icon="lucide:facebook" width="14"></iconify-icon>
-                </a><a href="#" class="hover:text-cyan-400 transition-colors">
-                    <iconify-icon icon="lucide:twitter" width="14"></iconify-icon>
-                </a></div>
+        <div class="flex items-center gap-4">
+            <a href="tel:+1234567890" class="flex items-center gap-1.5 hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:phone" width="12"></iconify-icon>+1 (234) 567-890</a>
+            <span class="hidden sm:inline text-slate-600">|</span>
+            <a href="mailto:hello@luxehair.com" class="hidden sm:flex items-center gap-1.5 hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:mail" width="12"></iconify-icon>hello@luxehair.com</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden md:flex items-center gap-1.5"><iconify-icon icon="lucide:clock" width="12"></iconify-icon>Mon–Sat: 9AM – 8PM</span>
+            <div class="flex items-center gap-3 ml-2">
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:instagram" width="14"></iconify-icon></a>
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:facebook" width="14"></iconify-icon></a>
+                <a href="#" class="hover:text-cyan-400 transition-colors"><iconify-icon icon="lucide:twitter" width="14"></iconify-icon></a>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- NAVBAR -->
 <header id="navbar" class="sticky top-0 z-40 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"><a href="index.html"
-                                                                                          class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-full flex items-center justify-center"
-                 style="background:linear-gradient(to top right,#06b6d4,#a855f7)">
-                <iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon>
-            </div>
-            <div><span class="text-lg font-semibold tracking-tight">LUXE</span><span
-                        class="text-lg font-light text-slate-400 tracking-tight">HAIR</span></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(to top right,#06b6d4,#a855f7);box-shadow:0 10px 15px -3px rgb(6 182 212/0.2)"><iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon></div>
+            <div><span class="text-lg font-semibold tracking-tight">LUXE</span><span class="text-lg font-light text-slate-400 tracking-tight">HAIR</span></div>
         </a>
-        <nav class="hidden lg:flex items-center gap-8"><a href="index.html"
-                                                          class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a><a
-                    href="offers.html"
-                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Offers</a><a
-                    href="services.html"
-                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a><a
-                    href="reviews.html"
-                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Reviews</a><a
-                    href="team.html"
-                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors active">Team</a><a
-                    href="gallery.html"
-                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Gallery</a><a
-                    href="contact.html"
-                    class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact
+        <nav class="hidden lg:flex items-center gap-8">
+            <a href="index.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a>
+            <a href="offers.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Offers</a>
+            <a href="services.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
+            <a href="reviews.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Reviews</a>
+            <a href="teams.html" class="nav-link text-sm font-medium text-white transition-colors active">Team</a>
+            <a href="gallery.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Gallery</a>
+            <a href="contact.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <a href="index.html#book" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-slate-900 transition-all duration-300 hover:opacity-90" style="background:#ffffff;box-shadow:0 10px 15px -3px rgba(255,255,255,0.05)"><iconify-icon icon="lucide:calendar" width="14"></iconify-icon>Book Now</a>
+            <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg glass"><iconify-icon icon="lucide:menu" width="20"></iconify-icon></button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full z-50 glass-panel">
+    <div class="flex items-center justify-between p-5 border-b border-white/5">
+        <span class="font-semibold">Menu</span>
+        <button id="closeMenu" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors"><iconify-icon icon="lucide:x" width="18"></iconify-icon></button>
+    </div>
+    <nav class="flex flex-col p-5 gap-1">
+        <a href="index.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Home</a>
+        <a href="offers.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Offers</a>
+        <a href="services.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Services</a>
+        <a href="reviews.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Reviews</a>
+        <a href="teams.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-white hover:bg-white/5 transition-all">Team</a>
+        <a href="gallery.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Gallery</a>
+        <a href="contact.html" class="mobile-link px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Contact</a>
+        <a href="index.html#book" class="mt-4 flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-medium text-slate-900 bg-white"><iconify-icon icon="lucide:calendar" width="14"></iconify-icon>Book Now</a>
+    </nav>
+</div>
+<div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+<!-- ===== PAGE BANNER ===== -->
+<section class="relative py-20 sm:py-28 overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://picsum.photos/seed/team-banner-luxe/1920/600.jpg" alt="Our Team" class="w-full h-full object-cover opacity-20">
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,#030712,rgba(3,7,18,0.8),#030712)"></div>
+    </div>
+    <!-- Floating dots -->
+    <div class="absolute top-32 right-24 w-2 h-2 bg-violet-400 rounded-full hidden lg:block" style="animation:pulse-glow 3s ease-in-out infinite"></div>
+    <div class="absolute top-56 right-48 w-1.5 h-1.5 bg-cyan-400 rounded-full hidden lg:block" style="animation:pulse-glow 3s ease-in-out infinite 1s"></div>
+    <div class="absolute bottom-32 right-36 w-1 h-1 bg-violet-400 rounded-full hidden lg:block" style="animation:pulse-glow 3s ease-in-out infinite 2s"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center" style="animation:fade-in 0.8s ease forwards">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-medium text-violet-400 mb-4">
+            <iconify-icon icon="lucide:users" width="12"></iconify-icon>
+            The Artists Behind The Chair
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-medium tracking-tighter mb-4">Meet Our <span class="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">Team</span></h1>
+        <p class="text-sm text-slate-400 font-light max-w-lg mx-auto">Passionate professionals with years of experience, dedicated to making you look and feel absolutely amazing.</p>
+    </div>
+</section>
+
+<!-- ===== TEAM STATS ===== -->
+<section class="relative z-10 -mt-4 mb-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 reveal">
+            <div class="glass rounded-xl p-5 text-center">
+                <div class="text-2xl font-semibold text-cyan-400">12</div>
+                <div class="text-[10px] text-slate-500 font-medium mt-1 uppercase tracking-wider">Stylists</div>
+            </div>
+            <div class="glass rounded-xl p-5 text-center">
+                <div class="text-2xl font-semibold text-violet-400">85+</div>
+                <div class="text-[10px] text-slate-500 font-medium mt-1 uppercase tracking-wider">Years Combined</div>
+            </div>
+            <div class="glass rounded-xl p-5 text-center">
+                <div class="text-2xl font-semibold text-cyan-400">15+</div>
+                <div class="text-[10px] text-slate-500 font-medium mt-1 uppercase tracking-wider">Certifications</div>
+            </div>
+            <div class="glass rounded-xl p-5 text-center">
+                <div class="text-2xl font-semibold text-violet-400">4.9</div>
+                <div class="text-[10px] text-slate-500 font-medium mt-1 uppercase tracking-wider">Avg Rating</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MAIN TEAM GRID ===== -->
+<section class="relative z-10 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Team Member 1 - Featured -->
+            <div class="reveal sm:col-span-2 lg:col-span-2 lg:row-span-2" style="transition-delay:0.05s">
+                <div class="team-card group relative rounded-2xl overflow-hidden cursor-pointer h-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+                        <div class="overflow-hidden">
+                            <img src="https://picsum.photos/seed/stylist-alex-main/600/800.jpg" alt="Alex Morgan" class="team-img w-full h-full object-cover min-h-[400px]">
+                        </div>
+                        <div class="relative bg-gradient-to-br from-slate-900/90 to-slate-950 p-8 flex flex-col justify-center">
+                            <div class="inline-flex self-start items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-xs font-medium text-cyan-400 mb-4">
+                                <iconify-icon icon="lucide:crown" width="12"></iconify-icon>
+                                Founder & Director
+                            </div>
+                            <h3 class="text-2xl font-medium mb-2">Alex Morgan</h3>
+                            <p class="text-sm text-cyan-400 font-medium mb-4">Creative Director</p>
+                            <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">With over 15 years of experience, Alex founded LUXE HAIR with a vision to merge artistry with technical precision. Trained in London and Paris, Alex specializes in transformative color corrections, precision cutting, and editorial styling.</p>
+
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="lucide:graduation-cap" width="14" class="text-slate-500 flex-shrink-0"></iconify-icon>
+                                    <span class="text-xs text-slate-400">Sassoon Academy London — Advanced Cutting</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="lucide:award" width="14" class="text-slate-500 flex-shrink-0"></iconify-icon>
+                                    <span class="text-xs text-slate-400">Wella Master Colorist Certified</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="lucide:star" width="14" class="text-slate-500 flex-shrink-0"></iconify-icon>
+                                    <span class="text-xs text-slate-400">15+ Years Experience</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="lucide:users" width="14" class="text-slate-500 flex-shrink-0"></iconify-icon>
+                                    <span class="text-xs text-slate-400">5,000+ Happy Clients</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3 mt-auto">
+                                <a href="#" class="w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
+                                    <iconify-icon icon="lucide:instagram" width="14"></iconify-icon>
+                                </a>
+                                <a href="#" class="w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
+                                    <iconify-icon icon="lucide:twitter" width="14"></iconify-icon>
+                                </a>
+                                <a href="#" class="w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
+                                    <iconify-icon icon="lucide:linkedin" width="14"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="reveal" style="transition-delay:0.1s">
+                <div class="team-card group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="https://picsum.photos/seed/stylist-mia-team/500/670.jpg" alt="Mia Johnson" class="team-img w-full h-full object-cover">
+                    </div>
+                    <div class="team-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-lg font-medium mb-1">Mia Johnson</h3>
+                        <p class="text-xs text-violet-400 font-medium mb-3">Senior Colorist</p>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">Specializes in balayage, ombré, and creative vivid color transformations. Known for seamless, natural-looking results.</p>
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:award" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">Wella Color Expert</span></div>
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:clock" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">10 Years Experience</span></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:instagram" width="13"></iconify-icon></a>
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:twitter" width="13"></iconify-icon></a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 to-transparent p-6 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 class="text-lg font-medium">Mia Johnson</h3>
+                        <p class="text-xs text-violet-400 font-medium">Senior Colorist</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="reveal" style="transition-delay:0.15s">
+                <div class="team-card group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="https://picsum.photos/seed/stylist-daniel-team/500/670.jpg" alt="Daniel Park" class="team-img w-full h-full object-cover">
+                    </div>
+                    <div class="team-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-lg font-medium mb-1">Daniel Park</h3>
+                        <p class="text-xs text-cyan-400 font-medium mb-3">Styling Specialist</p>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">Expert in bridal styling, updos, and editorial looks. Has worked with Vogue, Elle, and multiple fashion campaigns.</p>
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:award" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">Bridal Styling Certified</span></div>
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:clock" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">8 Years Experience</span></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:instagram" width="13"></iconify-icon></a>
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:twitter" width="13"></iconify-icon></a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 to-transparent p-6 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 class="text-lg font-medium">Daniel Park</h3>
+                        <p class="text-xs text-cyan-400 font-medium">Styling Specialist</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member 4 -->
+            <div class="reveal" style="transition-delay:0.2s">
+                <div class="team-card group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="https://picsum.photos/seed/stylist-sofia-team/500/670.jpg" alt="Sofia Rivera" class="team-img w-full h-full object-cover">
+                    </div>
+                    <div class="team-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-lg font-medium mb-1">Sofia Rivera</h3>
+                        <p class="text-xs text-violet-400 font-medium mb-3">Extensions Expert</p>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">Certified in multiple extension methods with a flawless natural-blend technique that clients travel across state for.</p>
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:award" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">Great Lengths Certified</span></div>
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:clock" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">7 Years Experience</span></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:instagram" width="13"></iconify-icon></a>
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:twitter" width="13"></iconify-icon></a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 to-transparent p-6 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 class="text-lg font-medium">Sofia Rivera</h3>
+                        <p class="text-xs text-violet-400 font-medium">Extensions Expert</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member 5 -->
+            <div class="reveal" style="transition-delay:0.25s">
+                <div class="team-card group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="https://picsum.photos/seed/stylist-james-team/500/670.jpg" alt="James Chen" class="team-img w-full h-full object-cover">
+                    </div>
+                    <div class="team-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-lg font-medium mb-1">James Chen</h3>
+                        <p class="text-xs text-cyan-400 font-medium mb-3">Men's Stylist</p>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">Specializes in men's cuts, fades, beard sculpting, and modern textured styles. A favorite among our male clientele.</p>
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:award" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">Barbering Diploma</span></div>
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:clock" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">6 Years Experience</span></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:instagram" width="13"></iconify-icon></a>
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:twitter" width="13"></iconify-icon></a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 to-transparent p-6 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 class="text-lg font-medium">James Chen</h3>
+                        <p class="text-xs text-cyan-400 font-medium">Men's Stylist</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member 6 -->
+            <div class="reveal" style="transition-delay:0.3s">
+                <div class="team-card group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="https://picsum.photos/seed/stylist-emma-team/500/670.jpg" alt="Emma Laurent" class="team-img w-full h-full object-cover">
+                    </div>
+                    <div class="team-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-lg font-medium mb-1">Emma Laurent</h3>
+                        <p class="text-xs text-violet-400 font-medium mb-3">Texture Specialist</p>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">An expert in natural hair care, curly cuts, and protective styling. Champion of the curly girl movement.</p>
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:award" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">Curl Specialist Certified</span></div>
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:clock" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">5 Years Experience</span></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:instagram" width="13"></iconify-icon></a>
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:twitter" width="13"></iconify-icon></a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 to-transparent p-6 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 class="text-lg font-medium">Emma Laurent</h3>
+                        <p class="text-xs text-violet-400 font-medium">Texture Specialist</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member 7 -->
+            <div class="reveal" style="transition-delay:0.35s">
+                <div class="team-card group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="https://picsum.photos/seed/stylist-noah-team/500/670.jpg" alt="Noah Williams" class="team-img w-full h-full object-cover">
+                    </div>
+                    <div class="team-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-lg font-medium mb-1">Noah Williams</h3>
+                        <p class="text-xs text-cyan-400 font-medium mb-3">Keratin Expert</p>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">Our keratin and botox treatment specialist. Known for turning the most damaged hair into silky perfection.</p>
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:award" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">Brazilian Blowout Certified</span></div>
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:clock" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">6 Years Experience</span></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:instagram" width="13"></iconify-icon></a>
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:twitter" width="13"></iconify-icon></a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 to-transparent p-6 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 class="text-lg font-medium">Noah Williams</h3>
+                        <p class="text-xs text-cyan-400 font-medium">Keratin Expert</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member 8 -->
+            <div class="reveal" style="transition-delay:0.4s">
+                <div class="team-card group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="https://picsum.photos/seed/stylist-lily-team/500/670.jpg" alt="Lily Chang" class="team-img w-full h-full object-cover">
+                    </div>
+                    <div class="team-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-lg font-medium mb-1">Lily Chang</h3>
+                        <p class="text-xs text-violet-400 font-medium mb-3">Junior Stylist</p>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">Rising talent with exceptional attention to detail. Brings fresh creativity and youthful energy to every appointment.</p>
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:graduation-cap" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">Cosmetology License</span></div>
+                            <div class="flex items-center gap-2"><iconify-icon icon="lucide:clock" width="10" class="text-slate-500"></iconify-icon><span class="text-[10px] text-slate-500">2 Years Experience</span></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:instagram" width="13"></iconify-icon></a>
+                            <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"><iconify-icon icon="lucide:twitter" width="13"></iconify-icon></a>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 to-transparent p-6 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 class="text-lg font-medium">Lily Chang</h3>
+                        <p class="text-xs text-violet-400 font-medium">Junior Stylist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY JOIN OUR TEAM (CTA) ===== -->
+<section class="relative z-10 py-20 sm:py-24 overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://picsum.photos/seed/salon-interior-cta/1920/700.jpg" alt="Salon Interior" class="w-full h-full object-cover opacity-15">
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,#030712,rgba(3,7,18,0.7),#030712)"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="glass-panel rounded-2xl p-8 sm:p-12 lg:p-16 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-medium text-cyan-400 mb-4">
+                        <iconify-icon icon="lucide:briefcase" width="12"></iconify-icon>
+                        Join Our Family
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-medium tracking-tighter mb-4">We're Always <span class="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Growing</span></h2>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">Love hair? Love making people feel confident? We're always looking for talented, passionate stylists to join our growing team.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="lucide:check-circle-2" width="18" class="text-emerald-400 flex-shrink-0 mt-0.5"></iconify-icon>
+                            <span class="text-sm text-slate-300">Ongoing education & workshop opportunities</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="luce:check-circle-2" width="18" class="text-emerald-400 flex-shrink-0 mt-0.5"></iconify-icon>
+                            <span class="text-sm text-slate-300">Competitive commission structure + base salary</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="lucide:check-circle-2" width="18" class="text-emerald-400 flex-shrink-0 mt-0.5"></iconify-icon>
+                            <span class="text-sm text-slate-300">Premium products & tools provided</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="lucide:check-circle-2" width="18" class="text-emerald-400 flex-shrink-0 mt-0.5"></iconify-icon>
+                            <span class="text-sm text-slate-300">Warm, supportive, creative environment</span>
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="contact.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium text-slate-900 bg-white hover:opacity-90 transition-all duration-300" style="box-shadow:0 10px 15px -3px rgba(255,255,255,0.05)">
+                            <iconify-icon icon="lucide:send" width="14"></iconify-icon>
+                            Apply Now
+                        </a>
+                        <a href="contact.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium text-white glass hover:bg-white/10 transition-all duration-300">
+                            <iconify-icon icon="lucide:download" width="14"></iconify-icon>
+                            Download Application
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 rounded-2xl overflow-hidden" style="animation: float-1 4s ease-in-out infinite;">
+                            <img src="https://picsum.photos/seed/salon-team-group/500/500.jpg" alt="Our Team" class="w-full h-full object-cover rounded-2xl">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent rounded-2xl"></div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-xl bg-cyan-500/10 flex items-center justify-center" style="animation: float-1 4s ease-in-out infinite 0.5s;">
+                            <iconify-icon icon="lucide:heart" width="28" class="text-cyan-400"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="relative z-10 border-t border-white/5 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div>
+                <a href="index.html" class="flex items-center gap-2.5 mb-5">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(to top right,#06b6d4,#a855f7);box-shadow:0 10px 15px -3px rgb(6 182 212/0.2)"><iconify-icon icon="lucide:scissors" width="18" class="text-white"></iconify-icon></div>
+                    <div><span class="text-lg font-semibold tracking-tight">LUXE</span><span class="text-lg font-light text-slate-400 tracking-tight">HAIR</span></div>
+                </a>
+                <p class="text-sm text-slate-500 font-light leading-relaxed mb-5">Premium hair salon offering world-class styling, coloring, and treatments in the heart of the city.</p>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:instagram" width="16"></iconify-icon></a>
+                    <a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:facebook" width="16"></iconify-icon></a>
+                    <a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:twitter" width="16"></iconify-icon></a>
+                    <a href="#" class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors text-slate-400 hover:text-white"><iconify-icon icon="lucide:youtube" width="16"></iconify-icon></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-sm font-medium mb-5">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-sm text-slate-500 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="offers.html" class="text-sm text-slate-500 hover:text-white transition-colors">Offers & Deals</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Services</a></li>
+                    <li><a href="reviews.html" class="text-sm text-slate-500 hover:text-white transition-colors">Reviews</a></li>
+                    <li><a href="teams.html" class="text-sm text-white hover:text-cyan-400 transition-colors">Our Team</a></li>
+                    <li><a href="gallery.html" class="text-sm text-slate-500 hover:text-white transition-colors">Gallery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-medium mb-5">Services</h4>
+                <ul class="space-y-3">
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Cutting</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Coloring</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Keratin Treatment</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Blowout & Styling</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Hair Extensions</a></li>
+                    <li><a href="services.html" class="text-sm text-slate-500 hover:text-white transition-colors">Bridal & Event</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-medium mb-5">Stay Updated</h4>
+                <p class="text-sm text-slate-500 font-light mb-4">Subscribe for exclusive deals and styling tips.</p>
+                <form id="newsletterForm" class="flex gap-2">
+                    <input type="email" required placeholder="your@email.com" class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 transition-all min-w-0">
+                    <button type="submit" class="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-900 bg-white hover:opacity-90 transition-all flex-shrink-0"><iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon></button>
+                </form>
+                <div class="mt-6 p-4 glass rounded-lg">
+                    <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium mb-1"><iconify-icon icon="lucide:shield-check" width="14"></iconify-icon>100% Privacy</div>
+                    <p class="text-[10px] text-slate-500">We never share your info. Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-600">&copy; 2025 LUXE HAIR. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="contact.html" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Privacy Policy</a>
+                <a href="contact.html" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Terms of Service</a>
+                <a href="contact.html" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast" class="toast fixed bottom-6 right-6 z-[100] glass-panel rounded-xl px-5 py-4 flex items-center gap-3 max-w-sm">
+    <div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0"><iconify-icon icon="lucide:check" width="16" class="text-emerald-400"></iconify-icon></div>
+    <div><div class="text-sm font-medium" id="toastTitle">Success!</div><div class="text-xs text-slate-400" id="toastMsg">Done.</div></div>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" class="fixed bottom-6 left-6 z-50 w-10 h-10 rounded-full glass flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-white/10"><iconify-icon icon="lucide:chevron-up" width="18"></iconify-icon></button>
+
+<script>
+    // ===== MOBILE MENU =====
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenuBtn = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; }
+    menuBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    // ===== STICKY NAVBAR =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(3,7,18,0.85)';
+            navbar.style.backdropFilter = 'blur(20px)';
+            navbar.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        } else {
+            navbar.style.background = 'transparent';
+            navbar.style.backdropFilter = 'none';
+            navbar.style.borderBottom = 'none';
+        }
+    });
+
+    // ===== SCROLL REVEAL =====
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ===== TOAST =====
+    function showToast(title, msg) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toastTitle').textContent = title;
+        document.getElementById('toastMsg').textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ===== NEWSLETTER =====
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        showToast('Subscribed! ✨', 'Welcome to the LUXE HAIR family.');
+        this.reset();
+    });
+
+    // ===== BACK TO TOP =====
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+            backToTop.style.opacity = '1';
+            backToTop.style.pointerEvents = 'auto';
+        } else {
+            backToTop.style.opacity = '0';
+            backToTop.style.pointerEvents = 'none';
+        }
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
